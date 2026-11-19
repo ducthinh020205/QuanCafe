@@ -78,6 +78,26 @@ namespace QuanCafe.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("MonAns");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AnhUrl = "",
+                            Gia = 30000,
+                            MoTa = "Bánh mì trứng chả xúc xích thịt",
+                            Nhom = "Đồ ăn nhanh",
+                            Ten = "Bánh mì"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AnhUrl = "",
+                            Gia = 30000,
+                            MoTa = "Phở thịt bò",
+                            Nhom = "Đồ nước",
+                            Ten = "Phở bò"
+                        });
                 });
 #pragma warning restore 612, 618
         }
