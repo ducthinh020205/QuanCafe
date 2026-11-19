@@ -1,0 +1,16 @@
+@model List<QuanCafe.Models.MonAn>
+
+@{
+    ViewData["Title"] = "Thực đơn";
+}
+
+<h1>Thực Đơn</h1>
+
+@foreach (var mon in Model)
+{
+    <div class="mb-3">
+        <h5>@mon.Ten - @mon.Gia.ToString("N0") đ</h5>
+        <p>@mon.MoTa</p>
+        <small>@mon.Nhom</small>
+    </div>
+}
