@@ -18,7 +18,7 @@ namespace QuanCafe.Models
         [Phone(ErrorMessage = "Số điện thoại không hợp lệ")]
         [StringLength(15)]
         [Display(Name = "Số điện thoại")]
-        public string SoDienThoai { get; set; }
+        public string SoDienThoai { get; set; } = string.Empty;
         [Required(ErrorMessage = "Vui Lòng nhập nội dung")]
         [StringLength(2000)]
         [Display(Name = "Nội dung")]
