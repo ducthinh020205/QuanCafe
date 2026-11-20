@@ -97,6 +97,78 @@ namespace QuanCafe.Migrations
                             MoTa = "Phở thịt bò",
                             Nhom = "Đồ nước",
                             Ten = "Phở bò"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AnhUrl = "",
+                            Gia = 30000,
+                            MoTa = "Phở thịt gà",
+                            Nhom = "Đồ nước",
+                            Ten = "Phở gà"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AnhUrl = "",
+                            Gia = 35000,
+                            MoTa = "Phở thịt lợn",
+                            Nhom = "Đồ nước",
+                            Ten = "Phở lợn"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AnhUrl = "",
+                            Gia = 40000,
+                            MoTa = "Bún riêu cua",
+                            Nhom = "Đồ nước",
+                            Ten = "Bún Riêu"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AnhUrl = "",
+                            Gia = 20000,
+                            MoTa = "Cà phê thêm đã",
+                            Nhom = "Thức uống",
+                            Ten = "Cà phê đá"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AnhUrl = "",
+                            Gia = 20000,
+                            MoTa = "Cà phê đậm đặc",
+                            Nhom = "Thức uống",
+                            Ten = "Cà phê đen"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AnhUrl = "",
+                            Gia = 30000,
+                            MoTa = "Nước ép cam pha chế",
+                            Nhom = "Thức uống",
+                            Ten = "Nước cam"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AnhUrl = "",
+                            Gia = 15000,
+                            MoTa = "Nước tắc pha chế",
+                            Nhom = "Thức uống",
+                            Ten = "Trà tắc"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AnhUrl = "",
+                            Gia = 15000,
+                            MoTa = "Nước Chanh pha chế",
+                            Nhom = "Thức uống",
+                            Ten = "Trà chanh"
                         });
                 });
 #pragma warning restore 612, 618
