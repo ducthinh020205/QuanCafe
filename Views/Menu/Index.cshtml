@@ -1,16 +1,30 @@
 @model List<QuanCafe.Models.MonAn>
-
 @{
     ViewData["Title"] = "Thực đơn";
 }
 
-<h1>Thực Đơn</h1>
+<div class="container py-4">
+    <h1 class="text-center mb-5">Thực đơn</h1>
 
-@foreach (var mon in Model)
-{
-    <div class="mb-3">
-        <h5>@mon.Ten - @mon.Gia.ToString("N0") đ</h5>
-        <p>@mon.MoTa</p>
-        <small>@mon.Nhom</small>
-    </div>
-}
+    @foreach (var nhom in Model.GroupBy(m => m.Nhom))
+    {
+        <h2 class="nhom-tieu-de">@nhom.Key</h2>
+
+        <div class="row g-4 mb-5">
+            @foreach (var mon in nhom)
+            {
+                <div class="col-12 col-sm-6 col-lg-4">
+                    <div class="card h-100 border-0 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">@mon.Ten</h5>
+                            <p class="card-text text-muted">@mon.MoTa</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-0">
+                            <span class="gia-mon">@mon.Gia.ToString("N0") đ</span>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
