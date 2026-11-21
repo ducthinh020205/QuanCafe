@@ -19,9 +19,16 @@ Dự án website giới thiệu thực đơn cho quán café/quán ăn nhỏ man
 ### Đã hoàn thành (Đã có)
 - **Trang chủ (Home):** Giới thiệu tổng quan về quán cà phê.
 - **Trang Giới thiệu (Giới Thiệu - `/Home/GioiThieu`):** Giới thiệu chi tiết về thương hiệu Đức Thịnh Coffee, không gian quán, hương vị cà phê chuẩn gu truyền thống và thực đơn phong phú.
-- **Thực đơn (Menu):** Hiển thị danh sách món ăn, thức uống được phân loại theo từng nhóm (Đồ ăn nhanh, Đồ nước, Thức uống), kèm giá bán và mô tả chi tiết.
+- **Thực đơn (Menu - `/Menu`):** 
+  - Phân nhóm món trực quan bằng `GroupBy` (Đồ ăn nhanh, Đồ nước, Thức uống).
+  - Trình bày dạng lưới thẻ Card Bootstrap 5 đẹp mắt, responsive trên mọi kích thước màn hình.
+  - Giá món được làm nổi bật với màu sắc chủ đạo.
 - **Form Liên hệ (`/LienHe`):** Khách hàng có thể gửi tin nhắn/phản hồi trực tiếp (Họ tên, Số điện thoại, Nội dung). Có kiểm tra tính hợp lệ (Validation) và hiển thị thông báo thành công.
 - **Trang Quản trị Liên hệ (`/Admin/LienHe`):** Dành cho admin xem danh sách các tin nhắn gửi đến (sắp xếp mới nhất lên đầu) và hỗ trợ xóa tin nhắn với hộp thoại xác nhận.
+- **Giao diện & Trải nghiệm (UI/UX):**
+  - Tông màu nhận diện thương hiệu quán café ấm áp: nâu cà phê (`#6f4e37`), màu nền kem dịu mắt (`#faf6f1`).
+  - Tích hợp font chữ tiếng Việt hiện đại Google Fonts (`Be Vietnam Pro`).
+  - Thanh điều hướng (Navbar) chuyên nghiệp với đầy đủ liên kết tới các trang và lối tắt vào trang Admin.
 - **Cơ sở dữ liệu (Database):**
   - Sử dụng Entity Framework Core theo hướng Code-First với SQLite.
   - Dữ liệu mẫu (Seed Data) về món ăn được nạp tự động qua migration (`HasData`).
@@ -31,9 +38,9 @@ Dự án website giới thiệu thực đơn cho quán café/quán ăn nhỏ man
 - [x] Trang Giới thiệu (giới thiệu thương hiệu, phong cách quán và điểm nổi bật).
 - [x] Form liên hệ gửi thông tin trực tiếp vào bảng `LienHe` (có validation dữ liệu nhập).
 - [x] Trang admin đơn giản để xem và quản lý/xóa các liên hệ.
+- [x] Đồng bộ thanh điều hướng (Navbar) liên kết tới đầy đủ các trang: Trang chủ, Thực đơn, Giới thiệu, Liên hệ, Admin.
+- [x] Nâng cấp giao diện với Bootstrap 5, font chữ `Be Vietnam Pro` và bảng màu cà phê riêng.
 - [ ] Bổ sung thêm món ăn mẫu, phân chia danh mục chi tiết hơn.
-- [ ] Gắn thêm nút/link trang Liên Hệ vào thanh điều hướng (Navbar).
-- [ ] Tối ưu giao diện Responsive với Bootstrap 5 trên thiết bị di động.
 - [ ] Triển khai (Deploy) và cập nhật đường dẫn demo.
 
 ### Hướng phát triển tiếp theo
@@ -48,7 +55,7 @@ Dự án website giới thiệu thực đơn cho quán café/quán ăn nhỏ man
 - **Framework:** [.NET 10.0](https://dotnet.microsoft.com/) (ASP.NET Core MVC)
 - **ORM:** Entity Framework Core 10
 - **Cơ sở dữ liệu:** SQLite (file `quancafe.db`)
-- **Giao diện / Frontend:** HTML5, CSS3, Razor Views, [Bootstrap 5](https://getbootstrap.com/), [jQuery](https://jquery.com/)
+- **Giao diện / Frontend:** HTML5, CSS3, Razor Views, [Bootstrap 5](https://getbootstrap.com/), [jQuery](https://jquery.com/), [Google Fonts](https://fonts.google.com/specimen/Be+Vietnam+Pro) (`Be Vietnam Pro`)
 
 ---
 
@@ -72,9 +79,9 @@ QuanCafe/
 │   ├── Admin/                   # Giao diện quản trị (Xem & xóa tin nhắn liên hệ)
 │   ├── Home/                    # Trang chủ (Index), Giới thiệu (GioiThieu), Privacy
 │   ├── LienHe/                  # Giao diện form liên hệ cho khách hàng
-│   ├── Menu/                    # Trang danh sách thực đơn
+│   ├── Menu/                    # Trang danh sách thực đơn (dạng Card theo nhóm)
 │   └── Shared/                  # Layout chung (_Layout.cshtml), trang lỗi
-├── wwwroot/                     # Tài nguyên tĩnh (CSS, JS, Bootstrap, jQuery)
+├── wwwroot/                     # Tài nguyên tĩnh (CSS tùy biến tông màu café, JS, Bootstrap, jQuery)
 ├── appsettings.json             # Chuỗi kết nối CSDL và cấu hình Logging
 ├── Program.cs                   # Đăng ký dịch vụ (DI) và Middleware pipeline
 └── QuanCafe.csproj              # Cấu hình project và các gói NuGet
@@ -123,7 +130,7 @@ Sau khi chạy, truy cập đường dẫn xuất hiện trên terminal (mặc �
 | :--- | :--- | :--- |
 | `/` hoặc `/Home/Index` | `HomeController.Index` | Trang chủ Đức Thịnh Coffee |
 | `/Home/GioiThieu` | `HomeController.GioiThieu` | Trang giới thiệu về quán |
-| `/Menu` | `MenuController.Index` | Danh sách thực đơn món ăn & thức uống |
+| `/Menu` | `MenuController.Index` | Danh sách thực đơn món ăn & thức uống (theo nhóm) |
 | `/LienHe` | `LienHeController.Index` | Form gửi phản hồi / tin nhắn liên hệ |
 | `/Admin/LienHe` | `AdminController.LienHe` | Trang quản trị xem và xóa tin nhắn liên hệ |
 | `/Home/Privacy` | `HomeController.Privacy` | Chính sách bảo mật |
@@ -133,13 +140,17 @@ Sau khi chạy, truy cập đường dẫn xuất hiện trên terminal (mặc �
 ## 📝 Nhật ký cập nhật (Changelog)
 
 ### [21/11/2026]
+- **Nâng cấp giao diện (UI/UX) toàn diện:**
+  - Tích hợp font chữ tiếng Việt `Be Vietnam Pro` từ Google Fonts.
+  - Tùy biến bộ màu phong cách cà phê với CSS Variables: nâu cà phê (`#6f4e37`), nền kem (`#faf6f1`), chữ nâu sẫm (`#3e2f26`).
+  - Tái thiết kế trang **Thực đơn** (`/Menu`): Hiển thị món dạng thẻ Card theo từng nhóm danh mục bằng `GroupBy`, giao diện responsive theo thiết bị.
+  - Cải tiến thanh điều hướng (**Navbar**): Đổi sang màu nâu café (`navbar-dark`), cập nhật đầy đủ liên kết: *Trang chủ*, *Thực đơn*, *Giới thiệu*, *Liên hệ* và nút *Admin* riêng biệt.
 - **Thêm Form Liên Hệ:**
   - Tạo [LienHeController.cs](file:///d:/Desktop/My_project_web/QuanCafe/Controllers/LienHeController.cs) tiếp nhận dữ liệu khách hàng gửi.
   - Tạo giao diện [Views/LienHe/Index.cshtml](file:///d:/Desktop/My_project_web/QuanCafe/Views/LienHe/Index.cshtml) có validation trường nhập và thông báo gửi thành công.
 - **Thêm Trang Quản trị Liên Hệ:**
   - Tạo [AdminController.cs](file:///d:/Desktop/My_project_web/QuanCafe/Controllers/AdminController.cs) với chức năng hiển thị danh sách và xóa tin nhắn (`XoaLienHe`).
   - Tạo giao diện [Views/Admin/LienHe.cshtml](file:///d:/Desktop/My_project_web/QuanCafe/Views/Admin/LienHe.cshtml) dạng bảng dữ liệu kèm nút xác nhận xóa.
-- **Cập nhật README.md:** Đồng bộ tính năng, cấu trúc thư mục và danh sách các trang.
 
 ### [20/11/2026]
 - **Thêm trang Giới Thiệu:** Tạo Action `GioiThieu()` trong `HomeController.cs` và view `Views/Home/GioiThieu.cshtml` với giao diện Bootstrap 5 giới thiệu thương hiệu, hương vị cà phê và thực đơn.
